@@ -1,5 +1,6 @@
 #-*-coding:utf8-*-
 from bit.models import Url
+import hashlib
 
 def long_to_short(long_url):
     if long_url[:4] != "http":
