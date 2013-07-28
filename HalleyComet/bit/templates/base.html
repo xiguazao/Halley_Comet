@@ -49,7 +49,7 @@
             <form method="post">
             {% csrf_token %}
             <div class="span3 offset1"><input type="text" id="short_url"></div >
-            <div class="span1 "><input type="button" value="copy"></div >
+            <div class="span1 "><input type="button" value="copy" id="copy"></div >
             </form>
         </div><br />
         {% endblock %}
@@ -61,7 +61,7 @@
             </div><br />
             {% for data in user_data %}
                 <div class="span4 offset1"> {{data.long_url}} </div >
-                <div class="span4 offset1"> {{data.short_url}} </div >
+                <div class="span4 offset1"> localhost/{{data.short_url}} </div >
             {% endfor %}
         </div><br />
         {% endblock %}
@@ -105,8 +105,10 @@
 
         {% block url%}
         <script>
-            short_url = document.getElementById("short_url");
-            short_url.value = "{{short_url}}";
+            if ("{{short_url}}" != ""){ 
+                short_url = document.getElementById("short_url");
+                short_url.value = "localhost/" + "{{short_url}}";
+            }    
         </script>
         {% endblock %}
 
